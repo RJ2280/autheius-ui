@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import QuizRunner from './QuizRunner.jsx';
 
 const LessonViewer = ({ lessonId = 'lesson01' }) => {
   const [content, setContent] = useState('');
   const [tutorial, setTutorial] = useState('');
-  const [quizzes, setQuizzes] = useState([]);
 
   useEffect(() => {
     const basePath = `/data/${lessonId}`;
@@ -16,10 +16,6 @@ const LessonViewer = ({ lessonId = 'lesson01' }) => {
     fetch(`${basePath}/tutorial.md`)
       .then(res => res.text())
       .then(setTutorial);
-
-    fetch(`${basePath}/quizzes.json`)
-      .then(res => res.json())
-      .then(data => setQuizzes(data.questions || []));
   }, [lessonId]);
 
   return (
@@ -32,14 +28,8 @@ const LessonViewer = ({ lessonId = 'lesson01' }) => {
       <h2>🎓 Tutorial</h2>
       <Markdown remarkPlugins={[remarkGfm]}>{tutorial}</Markdown>
 
-      <h2>🧪 Quiz Preview</h2>
-      <ul>
-        {quizzes.length > 0 ? (
-          quizzes.map((q, i) => <li key={i}>{q.question}</li>)
-        ) : (
-          <li>No quiz data found.</li>
-        )}
-      </ul>
+      <h2>🧪 Quiz</h2>
+      <QuizRunner lessonId={lessonId} />
     </div>
   );
 };
