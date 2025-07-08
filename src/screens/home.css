@@ -1,0 +1,87 @@
+:root {
+  --bg-light: #f0f0f5;
+  --text-light: #111;
+  --bg-dark: #050025;
+  --text-dark: #ECEBFF;
+  --accent-color: #7500FA;
+}
+
+.home {
+  font-family: sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.home:not(.dark) {
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+
+.home-navbar {
+  background: var(--accent-color);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.mode-toggle {
+  background: white;
+  color: var(--accent-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.home-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.home-main {
+  flex: 1;
+  padding: 2rem;
+}
+
+.home-actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.primary-button {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.secondary-button {
+  background: transparent;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.home-footer {
+  text-align: center;
+  padding: 1rem;
+  opacity: 0.7;
+}
