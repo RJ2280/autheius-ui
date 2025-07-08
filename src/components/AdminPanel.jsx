@@ -15,3 +15,10 @@ const AdminPanel = () => {
 };
 
 export default AdminPanel;
+
+<div style={{ marginTop: '2rem' }}>
+  <h3>📊 Diagnostics</h3>
+  <button onClick={() => alert('Quiz history and heatmaps stored locally.')}>
+    Show Quiz Analytics
+  </button>
+</div>
