@@ -1,0 +1,9 @@
+{
+  "questions": [
+    "1.  What is the primary purpose of prompt engineering?",
+    "3.  How does chain-of-thought prompting improve the quality of AI-generated responses?",
+    "5.  What are some strategies for troubleshooting vague or ambiguous prompts?",
+    "6.  How can you use prompt engineering to generate creative writing pieces?",
+    "9.  What are the potential challenges of bias in AI-generated output, and how can prompt engineering address them?"
+  ]
+}

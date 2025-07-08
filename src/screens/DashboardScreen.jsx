@@ -1,14 +1,20 @@
-import React from 'react';
-import TaskBar from '../layout/TaskBar.jsx';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const DashboardScreen = () => (
-  <div className="dashboard-screen">
-    <TaskBar section="Dashboard" />
-    <div className="content-wrapper">
-      <h1>🧠 Welcome to Autheius</h1>
-      <p>This is your dashboard center. Widgets and AI agents go here.</p>
+const DashboardScreen = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // ✅ Redirect to lesson center automatically
+    navigate('/lesson-center', { replace: true });
+  }, []);
+
+  return (
+    <div style={{ padding: '2rem' }}>
+      <h2>🔧 Dashboard loaded</h2>
+      <p>Redirecting to lesson center...</p>
     </div>
-  </div>
-);
+  );
+};
 
 export default DashboardScreen;

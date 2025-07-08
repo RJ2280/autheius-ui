@@ -1,0 +1,12 @@
+{
+  "questions": [
+    "1. What is prompt engineering?",
+    "2.  What is the primary purpose of a prompt in interacting with an LLM?",
+    "4.  What is the benefit of using few-shot prompts?",
+    "5.  Why is specificity important in prompt engineering?",
+    "7.  What type of prompt would you use to get the LLM to write a poem?",
+    "8.  What is a scenario-based prompt? Give an example.",
+    "9.  How can you control the output format of an LLM?",
+    "10. Why is it important to iterate and refine prompts?"
+  ]
+}

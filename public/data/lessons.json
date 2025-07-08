@@ -1,0 +1,267 @@
+[
+  {
+    "id": "lesson01",
+    "title": "Lesson 1: What Is Prompt Engineering?",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson02",
+    "title": "Lesson 2: Anatomy of a Prompt — System, User, and Assistant Roles",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson03",
+    "title": "Lesson 3: Prompt Strategies — Few-shot, Zero-shot, Chain-of-Thought",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson04",
+    "title": "Lesson 4: Prompt Debugging and Evaluation Techniques",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson05",
+    "title": "Lesson 5: Prompt Tuning vs Fine-Tuning — When and Why",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson06",
+    "title": "Lesson 6: Building a Prompt Library for Reuse",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson07",
+    "title": "Lesson 7: Introduction to Generative AI",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson08",
+    "title": "Lesson 8: Understanding Large Language Models (LLMs)",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson09",
+    "title": "Lesson 9: Comparing Major LLMs: GPT, Claude, Gemini, LLaMA",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson10",
+    "title": "Lesson 10: Multimodal AI: Text, Image, Audio, and Video",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson11",
+    "title": "Lesson 11: Ethics and Safety in Generative AI",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson12",
+    "title": "Lesson 12: Real-World Applications of GenAI",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson13",
+    "title": "Lesson 13: What Is Retrieval-Augmented Generation (RAG)?",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson14",
+    "title": "Lesson 14: Building a Simple RAG Agent with LangChain",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson15",
+    "title": "Lesson 15: Vector Databases: FAISS, Pinecone, Weaviate",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson16",
+    "title": "Lesson 16: Embedding Models and Document Chunking",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson17",
+    "title": "Lesson 17: Query Optimization and Semantic Search",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson18",
+    "title": "Lesson 18: Evaluating RAG Agent Performance",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson19",
+    "title": "Lesson 19: What Is an AI Agent?",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson20",
+    "title": "Lesson 20: Agent Frameworks: AutoGen, CrewAI, LangGraph",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson21",
+    "title": "Lesson 21: Building Autonomous Workflows",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson22",
+    "title": "Lesson 22: Decision Logic and Routing",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson23",
+    "title": "Lesson 23: Multi-Agent System Design",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson24",
+    "title": "Lesson 24: Agent Memory and Context Management",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson25",
+    "title": "Lesson 25: What Are MCP Servers and Why They Matter",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson26",
+    "title": "Lesson 26: Hosting AI Agents on MCP Infrastructure",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson27",
+    "title": "Lesson 27: Containerization with Docker and Kubernetes",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson28",
+    "title": "Lesson 28: API Orchestration and Microservices",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson29",
+    "title": "Lesson 29: Scaling AI Workloads in Production",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson30",
+    "title": "Lesson 30: Cost Optimization and Resource Management",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson31",
+    "title": "Lesson 31: Introduction to Video Generation with AI",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson32",
+    "title": "Lesson 32: Using Google Veo 3 for Text-to-Video",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson33",
+    "title": "Lesson 33: Image Generation Tools: Midjourney, DALL·E, Stable Diffusion",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson34",
+    "title": "Lesson 34: Prompt Engineering for Visual Media",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson35",
+    "title": "Lesson 35: Ethics of AI-Generated Media",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson36",
+    "title": "Lesson 36: Copyright, Bias, and Watermarking in GenAI",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson37",
+    "title": "Lesson 37: What Is Agentic AI?",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson38",
+    "title": "Lesson 38: Emergent Behavior in Autonomous Agents",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson39",
+    "title": "Lesson 39: Planning and Goal Setting in Agentic Systems",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson40",
+    "title": "Lesson 40: Multi-Agent Collaboration and Negotiation",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson41",
+    "title": "Lesson 41: Self-Improving Agents and Feedback Loops",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson42",
+    "title": "Lesson 42: Agentic AI in Real-World Applications",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson43",
+    "title": "Lesson 43: Introduction to AI Reasoning Models",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson44",
+    "title": "Lesson 44: Magistral: Transparent Reasoning for Regulated Domains",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson45",
+    "title": "Lesson 45: DeepSeek R1: Efficient Reasoning Under Constraints",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson46",
+    "title": "Lesson 46: OpenAI o3-pro: Cost-Effective High Reliability",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson47",
+    "title": "Lesson 47: Evaluating Reasoning Accuracy and Logic Chains",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson48",
+    "title": "Lesson 48: Integrating Reasoning Models into Scientific Workflows",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson49",
+    "title": "Lesson 49: Synthesis: Connecting AI Concepts Across the Curriculum",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson50",
+    "title": "Lesson 50: Capstone Project: Deploying a Full AI Agent System",
+    "level": "Unknown"
+  },
+  {
+    "id": "lesson51",
+    "title": "Introduction to Prompt Engineering: Talking to Machines",
+    "level": "Beginner"
+  },
+  {
+    "id": "lesson52",
+    "title": "Prompt Engineering: Crafting Effective Instructions for AI",
+    "level": "Intermediate"
+  },
+  {
+    "id": "lesson53",
+    "title": "Advanced Prompt Engineering: Crafting Powerful Prompts for Complex Tasks",
+    "level": "Advanced"
+  }
+]

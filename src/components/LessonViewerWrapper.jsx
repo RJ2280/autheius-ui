@@ -1,3 +1,4 @@
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import LessonViewer from './LessonViewer.jsx';
 

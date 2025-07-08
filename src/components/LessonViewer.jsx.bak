@@ -1,0 +1,9 @@
+const LessonViewer = ({ lessonId = 'lesson01' }) => {
+  console.log("👀 Prop received: lessonId =", lessonId);
+  return (
+    <div style={{ padding: '2rem' }}>
+      <h1>LessonViewer is working ✅</h1>
+      <p>Lesson ID: {lessonId}</p>
+    </div>
+  );
+};

@@ -1,0 +1,10 @@
+{
+  "questions": [
+    "1. What is the primary benefit of using few-shot learning in prompt engineering?",
+    "2. How does chain-of-thought prompting improve the performance of LLMs on complex reasoning tasks?",
+    "5.  What are some key elements to include in a prompt for creative writing?",
+    "6.  How can you use prompts to mitigate potential biases in LLM outputs?",
+    "8.  What are the advantages of using tools like LangSmith for prompt engineering?",
+    "10. What are some ethical considerations to keep in mind when crafting prompts?"
+  ]
+}
