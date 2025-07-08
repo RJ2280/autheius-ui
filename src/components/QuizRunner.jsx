@@ -10,7 +10,7 @@ const QuizRunner = ({ lessonId = 'lesson01' }) => {
   useEffect(() => {
     const loadQuiz = async () => {
       try {
-        const res = await fetch(`/data/${lessonId}/quizzes.json`);
+        const res = await fetch(`/data/${lessonId}/quiz.json`);
         const data = await res.json();
         setQuestions(data.questions || []);
         setPassingScore(data.scoring?.passing_score || 70);
@@ -32,14 +32,17 @@ const QuizRunner = ({ lessonId = 'lesson01' }) => {
         correct += 1;
       }
     });
-    const totalScore = correct * (10); // 10 points per question
+    const totalScore = correct * 10; // 10 points per question
     setScore(totalScore);
     setSubmitted(true);
+
+    if (totalScore >= passingScore) {
+      localStorage.setItem(`lesson-${lessonId}-completed`, 'true');
+    }
   };
 
   return (
     <div style={{ padding: '1rem' }}>
-      <h2>🧪 Lesson Quiz</h2>
       {questions.length === 0 ? (
         <p>No quiz data found.</p>
       ) : submitted ? (
