@@ -35,6 +35,9 @@ const AppLayout = ({ children }) => (
 const App = () => (
   <Router>
     <Routes>
+  <Route path='/admin' element={<AppLayout><AdminScreen /></AppLayout>} />
+  <Route path='/history' element={<AppLayout><HistoryScreen /></AppLayout>} />
+  <Route path='/achievements' element={<AppLayout><AchievementsScreen /></AppLayout>} />
       {/* Home page without global layout */}
       <Route path="/" element={<HomeScreen />} />
 
