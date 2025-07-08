@@ -1,34 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const LessonsScreen = () => {
-  const [lessons, setLessons] = useState([]);
-  const [loading, setLoading] = useState(true);
+const LessonCenter = () => {
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch('/api/lessons')
-      .then(res => res.json())
-      .then(data => {
-        setLessons(data.lessons || []);
-        setLoading(false);
-      });
-  }, []);
+  const lessons = Array.from({ length: 50 }, (_, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    return {
+      id: `lesson${num}`,
+      title: `Lesson ${num}`,
+      objective: `Explore foundational concepts of AI — Phase ${num}`
+    };
+  });
 
   return (
     <div style={{ padding: '2rem' }}>
-      <h1>📚 Autheius Lessons</h1>
-      {loading ? <p>Loading...</p> : (
-        <ul style={{ listStyle: 'none', padding: 0 }}>
-          {lessons.map(lesson => (
-            <li key={lesson.id} style={{ marginBottom: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '8px' }}>
-              <h3>{lesson.title}</h3>
-              <p>{lesson.summary}</p>
-              <a href={`/lessons/${lesson.id}`}>📘 View Full Lesson</a>
-            </li>
-          ))}
-        </ul>
-      )}
+      {console.log('LessonCenter is rendering')}
+      <h1 style={{ marginBottom: '1.5rem' }}>📚 AI Lessons Dashboard</h1>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+        gap: '1.5rem'
+      }}>
+        {lessons.map(lesson => (
+          <div
+            key={lesson.id}
+            style={{
+              border: '1px solid #ddd',
+              padding: '1rem',
+              borderRadius: '8px',
+              backgroundColor: '#fefefe',
+              cursor: 'pointer',
+              transition: 'box-shadow 0.2s',
+              boxShadow: '2px 2px 5px rgba(0,0,0,0.04)'
+            }}
+            onClick={() => navigate(`/lesson/${lesson.id}`)}
+            onMouseEnter={e => e.currentTarget.style.boxShadow = '2px 2px 12px rgba(0,0,0,0.1)'}
+            onMouseLeave={e => e.currentTarget.style.boxShadow = '2px 2px 5px rgba(0,0,0,0.04)'}
+          >
+            <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{lesson.title}</h2>
+            <p style={{ fontSize: '0.9rem', color: '#666' }}>{lesson.objective}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default LessonsScreen;
+export default LessonCenter;

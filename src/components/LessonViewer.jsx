@@ -6,9 +6,11 @@ import QuizRunner from './QuizRunner.jsx';
 const LessonViewer = ({ lessonId = 'lesson01' }) => {
   const [content, setContent] = useState('');
   const [tutorial, setTutorial] = useState('');
+  const [quizzes, setQuizzes] = useState([]);
 
   useEffect(() => {
     const basePath = `/data/${lessonId}`;
+
     fetch(`${basePath}/content.md`)
       .then(res => res.text())
       .then(setContent);
@@ -16,6 +18,10 @@ const LessonViewer = ({ lessonId = 'lesson01' }) => {
     fetch(`${basePath}/tutorial.md`)
       .then(res => res.text())
       .then(setTutorial);
+
+    fetch(`${basePath}/quiz.json`)
+      .then(res => res.json())
+      .then(data => setQuizzes(data.questions || []));
   }, [lessonId]);
 
   return (
@@ -29,7 +35,7 @@ const LessonViewer = ({ lessonId = 'lesson01' }) => {
       <Markdown remarkPlugins={[remarkGfm]}>{tutorial}</Markdown>
 
       <h2>🧪 Quiz</h2>
-      <QuizRunner lessonId={lessonId} />
+      <QuizRunner lessonId={lessonId} quizzes={quizzes} />
     </div>
   );
 };

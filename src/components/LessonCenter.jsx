@@ -12,6 +12,7 @@ const LessonCenter = () => {
       objective: `Explore foundational concepts of AI — Phase ${num}`
     };
   });
+console.log('LessonCenter is rendering');
 
   return (
     <div style={{ padding: '2rem' }}>
