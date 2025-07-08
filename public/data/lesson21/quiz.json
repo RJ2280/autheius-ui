@@ -1,19 +1,50 @@
 {
   "lesson": "Lesson 21",
   "questions": [
-    { "question": "What is an AI agent?", "answer": "An autonomous system that performs tasks based on goals and context." },
-    { "question": "Name one agent framework.", "answer": "AutoGen." },
-    { "question": "What is task orchestration?", "answer": "Coordinating multiple steps or tools to complete a goal." },
-    { "question": "What is decision logic?", "answer": "Rules that guide agent behavior based on input." },
-    { "question": "What is a multi-agent system?", "answer": "A group of agents that collaborate or compete to solve problems." },
-    { "question": "What is episodic memory?", "answer": "Memory of specific events or interactions." },
-    { "question": "How do agents differ from RPAs?", "answer": "Agents are goal-driven and adaptive; RPAs follow fixed scripts." },
-    { "question": "What is LangGraph used for?", "answer": "Building agent workflows with branching logic." },
-    { "question": "What is a routing function?", "answer": "A method to direct tasks to the correct agent or tool." },
-    { "question": "What is a future trend in agentic AI?", "answer": "Self-improving agents with long-term memory." }
+    {
+      "question": "What is an AI agent?",
+      "answer": "An autonomous system that performs tasks based on goals and context."
+    },
+    {
+      "question": "Name one agent framework.",
+      "answer": "AutoGen."
+    },
+    {
+      "question": "What is task orchestration?",
+      "answer": "Coordinating multiple steps or tools to complete a goal."
+    },
+    {
+      "question": "What is decision logic?",
+      "answer": "Rules that guide agent behavior based on input."
+    },
+    {
+      "question": "What is a multi-agent system?",
+      "answer": "A group of agents that collaborate or compete to solve problems."
+    },
+    {
+      "question": "What is episodic memory?",
+      "answer": "Memory of specific events or interactions."
+    },
+    {
+      "question": "How do agents differ from RPAs?",
+      "answer": "Agents are goal-driven and adaptive; RPAs follow fixed scripts."
+    },
+    {
+      "question": "What is LangGraph used for?",
+      "answer": "Building agent workflows with branching logic."
+    },
+    {
+      "question": "What is a routing function?",
+      "answer": "A method to direct tasks to the correct agent or tool."
+    },
+    {
+      "question": "What is a future trend in agentic AI?",
+      "answer": "Self-improving agents with long-term memory."
+    }
   ],
   "scoring": {
     "points_per_question": 10,
     "passing_score": 70
-  }
+  },
+  "history": []
 }

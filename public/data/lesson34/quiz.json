@@ -1,19 +1,50 @@
 {
   "lesson": "Lesson 34",
   "questions": [
-    { "question": "What is text-to-video generation?", "answer": "Creating video content from written prompts." },
-    { "question": "Name one video generation tool.", "answer": "Google Veo 3." },
-    { "question": "What does Midjourney specialize in?", "answer": "Artistic image generation." },
-    { "question": "What is prompt engineering?", "answer": "Crafting inputs to guide AI outputs." },
-    { "question": "Why are deepfakes controversial?", "answer": "They can mislead or impersonate people." },
-    { "question": "What is watermarking?", "answer": "Embedding a visible or invisible mark to identify content origin." },
-    { "question": "How can bias appear in generated media?", "answer": "Through training data or prompt phrasing." },
-    { "question": "What is attribution?", "answer": "Crediting the source or creator of content." },
-    { "question": "What is a future trend in GenAI media?", "answer": "Real-time video generation." },
-    { "question": "What is the role of copyright in GenAI?", "answer": "Protects original works and governs reuse." }
+    {
+      "question": "What is text-to-video generation?",
+      "answer": "Creating video content from written prompts."
+    },
+    {
+      "question": "Name one video generation tool.",
+      "answer": "Google Veo 3."
+    },
+    {
+      "question": "What does Midjourney specialize in?",
+      "answer": "Artistic image generation."
+    },
+    {
+      "question": "What is prompt engineering?",
+      "answer": "Crafting inputs to guide AI outputs."
+    },
+    {
+      "question": "Why are deepfakes controversial?",
+      "answer": "They can mislead or impersonate people."
+    },
+    {
+      "question": "What is watermarking?",
+      "answer": "Embedding a visible or invisible mark to identify content origin."
+    },
+    {
+      "question": "How can bias appear in generated media?",
+      "answer": "Through training data or prompt phrasing."
+    },
+    {
+      "question": "What is attribution?",
+      "answer": "Crediting the source or creator of content."
+    },
+    {
+      "question": "What is a future trend in GenAI media?",
+      "answer": "Real-time video generation."
+    },
+    {
+      "question": "What is the role of copyright in GenAI?",
+      "answer": "Protects original works and governs reuse."
+    }
   ],
   "scoring": {
     "points_per_question": 10,
     "passing_score": 70
-  }
+  },
+  "history": []
 }
