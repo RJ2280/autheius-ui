@@ -16,6 +16,9 @@ import VideoBuilderScreen from './screens/VideoBuilderScreen.jsx';
 import VideoHistoryScreen from './screens/VideoHistoryScreen.jsx';
 import SettingsScreen from './screens/SettingsScreen.jsx';
 
+// Lesson viewer
+import LessonViewerWrapper from './components/LessonViewerWrapper.jsx';
+
 const AppLayout = ({ children }) => (
   <>
     <Navbar />
@@ -32,7 +35,7 @@ const App = () => (
       {/* Home page does not include navbar or sidebar */}
       <Route path="/" element={<HomeScreen />} />
 
-      {/* All dashboard-related screens wrapped in AppLayout */}
+      {/* Dashboard-related screens wrapped in AppLayout */}
       <Route path="/dashboard" element={<AppLayout><DashboardScreen /></AppLayout>} />
       <Route path="/lessons" element={<AppLayout><LessonsScreen /></AppLayout>} />
       <Route path="/quiz" element={<AppLayout><QuizScreen /></AppLayout>} />
@@ -41,6 +44,9 @@ const App = () => (
       <Route path="/video" element={<AppLayout><VideoBuilderScreen /></AppLayout>} />
       <Route path="/videos" element={<AppLayout><VideoHistoryScreen /></AppLayout>} />
       <Route path="/settings" element={<AppLayout><SettingsScreen /></AppLayout>} />
+
+      {/* 🔥 New: Lesson viewer route */}
+      <Route path="/lesson/:id" element={<AppLayout><LessonViewerWrapper /></AppLayout>} />
     </Routes>
   </Router>
 );
