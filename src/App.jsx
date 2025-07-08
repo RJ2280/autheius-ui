@@ -16,15 +16,18 @@ import VideoBuilderScreen from './screens/VideoBuilderScreen.jsx';
 import VideoHistoryScreen from './screens/VideoHistoryScreen.jsx';
 import SettingsScreen from './screens/SettingsScreen.jsx';
 
-// Lesson viewer
+// Lesson viewer and dashboard
 import LessonViewerWrapper from './components/LessonViewerWrapper.jsx';
+import LessonCenter from './components/LessonCenter.jsx'; // 💡 Add this if using the new dashboard
 
 const AppLayout = ({ children }) => (
   <>
     <Navbar />
     <div style={{ display: 'flex' }}>
       <SidebarNav />
-      <div style={{ flex: 1 }}>{children}</div>
+      <div style={{ flex: 1, padding: '1.5rem' }}>
+        {children}
+      </div>
     </div>
   </>
 );
@@ -32,10 +35,10 @@ const AppLayout = ({ children }) => (
 const App = () => (
   <Router>
     <Routes>
-      {/* Home page does not include navbar or sidebar */}
+      {/* Home page without global layout */}
       <Route path="/" element={<HomeScreen />} />
 
-      {/* Dashboard-related screens wrapped in AppLayout */}
+      {/* Core screens with layout */}
       <Route path="/dashboard" element={<AppLayout><DashboardScreen /></AppLayout>} />
       <Route path="/lessons" element={<AppLayout><LessonsScreen /></AppLayout>} />
       <Route path="/quiz" element={<AppLayout><QuizScreen /></AppLayout>} />
@@ -45,8 +48,9 @@ const App = () => (
       <Route path="/videos" element={<AppLayout><VideoHistoryScreen /></AppLayout>} />
       <Route path="/settings" element={<AppLayout><SettingsScreen /></AppLayout>} />
 
-      {/* 🔥 New: Lesson viewer route */}
+      {/* 🔥 New routes */}
       <Route path="/lesson/:id" element={<AppLayout><LessonViewerWrapper /></AppLayout>} />
+      <Route path="/lesson-center" element={<AppLayout><LessonCenter /></AppLayout>} />
     </Routes>
   </Router>
 );
