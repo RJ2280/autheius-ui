@@ -1,0 +1,19 @@
+{
+  "lesson": "Lesson 30",
+  "questions": [
+    { "question": "What is an MCP server?", "answer": "A server architecture for managing AI agents and workloads." },
+    { "question": "Name one containerization tool.", "answer": "Docker." },
+    { "question": "What is Kubernetes used for?", "answer": "Orchestrating containers at scale." },
+    { "question": "What is API orchestration?", "answer": "Coordinating multiple APIs to work together." },
+    { "question": "What is autoscaling?", "answer": "Automatically adjusting resources based on demand." },
+    { "question": "How can you reduce infrastructure costs?", "answer": "By optimizing resource allocation and usage." },
+    { "question": "What is a microservice?", "answer": "A small, independent service that performs a specific task." },
+    { "question": "What is a gateway in API design?", "answer": "A central point that routes and secures API traffic." },
+    { "question": "What is serverless hosting?", "answer": "Running code without managing servers directly." },
+    { "question": "What is a future trend in AI infrastructure?", "answer": "Autonomous resource allocation." }
+  ],
+  "scoring": {
+    "points_per_question": 10,
+    "passing_score": 70
+  }
+}

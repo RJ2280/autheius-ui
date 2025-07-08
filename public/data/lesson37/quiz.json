@@ -1,0 +1,19 @@
+{
+  "lesson": "Lesson 37",
+  "questions": [
+    { "question": "What is agentic AI?", "answer": "AI that acts autonomously toward goals using reasoning and planning." },
+    { "question": "What is emergent behavior?", "answer": "Unexpected capabilities that arise from agent interactions." },
+    { "question": "What is a goal tree?", "answer": "A structured hierarchy of objectives and sub-tasks." },
+    { "question": "What is multi-agent collaboration?", "answer": "Agents working together to solve complex problems." },
+    { "question": "What is a feedback loop?", "answer": "A system where outputs are used to improve future performance." },
+    { "question": "Name one planning algorithm.", "answer": "A* search." },
+    { "question": "What is agent negotiation?", "answer": "Agents exchanging offers to reach agreement." },
+    { "question": "What is a self-improving agent?", "answer": "An agent that learns from its own actions and outcomes." },
+    { "question": "Where is agentic AI used?", "answer": "Finance, logistics, education, and more." },
+    { "question": "What is a future trend in agentic AI?", "answer": "Emotion-aware agents and autonomous ecosystems." }
+  ],
+  "scoring": {
+    "points_per_question": 10,
+    "passing_score": 70
+  }
+}

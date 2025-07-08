@@ -1,0 +1,19 @@
+{
+  "lesson": "Lesson 9",
+  "questions": [
+    { "question": "What is the main goal of Lesson 9?", "answer": "Refer to the objective section." },
+    { "question": "Name one key concept from Lesson 9.", "answer": "Refer to the overview section." },
+    { "question": "What is one practice task in Lesson 9?", "answer": "Refer to the practice section." },
+    { "question": "What is a future trend mentioned?", "answer": "Refer to the future trends section." },
+    { "question": "Why is this lesson important?", "answer": "It builds foundational AI skills." },
+    { "question": "How can you apply this lesson?", "answer": "In prompt design and evaluation." },
+    { "question": "What tool or technique is introduced?", "answer": "Refer to overview or practice." },
+    { "question": "What is one challenge this lesson helps solve?", "answer": "Improving prompt effectiveness." },
+    { "question": "What role does experimentation play?", "answer": "It helps refine prompt quality." },
+    { "question": "How does this lesson connect to future lessons?", "answer": "It sets up advanced techniques." }
+  ],
+  "scoring": {
+    "points_per_question": 10,
+    "passing_score": 70
+  }
+}

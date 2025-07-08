@@ -1,0 +1,19 @@
+{
+  "lesson": "Lesson 49",
+  "questions": [
+    { "question": "What is the goal of Lesson 49?", "answer": "Refer to the objective section." },
+    { "question": "Name one concept that connects multiple lessons.", "answer": "Prompt engineering." },
+    { "question": "What is a capstone project?", "answer": "A final project that synthesizes learning into a real-world application." },
+    { "question": "What is a concept graph?", "answer": "A visual map showing relationships between ideas." },
+    { "question": "Name one deployment tool.", "answer": "Docker." },
+    { "question": "What is orchestration in AI?", "answer": "Coordinating multiple agents or services." },
+    { "question": "What is a governance framework?", "answer": "A set of rules and policies for responsible AI use." },
+    { "question": "What is a performance metric?", "answer": "A measure of how well a system achieves its goals." },
+    { "question": "What is a future trend in AI deployment?", "answer": "Autonomous agent ecosystems." },
+    { "question": "How do you evaluate a capstone project?", "answer": "Using criteria like functionality, clarity, and innovation." }
+  ],
+  "scoring": {
+    "points_per_question": 10,
+    "passing_score": 70
+  }
+}
