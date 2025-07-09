@@ -1,45 +1,54 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import LessonCard from './LessonCard';
 
 const LessonCenter = () => {
-  const navigate = useNavigate();
+  const [lessons, setLessons] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [completedLessons, setCompletedLessons] = useState(new Set());
+  const userId = 'robbie'; // Placeholder user ID for progress tracking
 
-  const lessons = Array.from({ length: 50 }, (_, i) => {
-    const num = String(i + 1).padStart(2, '0');
-    return {
-      id: `lesson${num}`,
-      title: `Lesson ${num}`,
-      objective: `Explore foundational concepts of AI — Phase ${num}`
+  useEffect(() => {
+    const fetchLessons = async () => {
+      try {
+        // Fetch lessons and user progress in parallel for speed
+        const [lessonsResponse, progressResponse] = await Promise.all([
+          axios.get('/api/lessons'),
+          axios.get(`/api/users/${userId}/progress`)
+        ]);
+
+        setLessons(lessonsResponse.data);
+        setCompletedLessons(new Set(progressResponse.data.completedLessonIds));
+      } catch (err) {
+        setError('Failed to load lessons. Is the chimera-backend server running?');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
     };
-  });
-console.log('LessonCenter is rendering');
+
+    fetchLessons();
+  }, [userId]); // Rerun if userId changes
+
+  if (loading) {
+    return <div className="loading-state">🧠 Synthesizing lesson data from the knowledge graph...</div>;
+  }
+
+  if (error) {
+    return <div className="error-state">❌ {error}</div>;
+  }
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>📚 AI Lessons Dashboard</h1>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-        gap: '1.5rem'
-      }}>
-        {lessons.map(lesson => (
-          <div
-            key={lesson.id}
-            style={{
-              border: '1px solid #ccc',
-              padding: '1rem',
-              borderRadius: '8px',
-              background: '#f9f9f9',
-              cursor: 'pointer',
-              boxShadow: '2px 2px 5px rgba(0,0,0,0.05)'
-            }}
-            onClick={() => navigate(`/lesson/${lesson.id}`)}
-          >
-            <h2 style={{ marginBottom: '0.5rem' }}>{lesson.title}</h2>
-            <p style={{ fontSize: '0.9rem', color: '#555' }}>{lesson.objective}</p>
-          </div>
-        ))}
-      </div>
+    <div className="lesson-center-grid">
+      {lessons.map(lesson => (
+        <LessonCard
+          key={lesson.id}
+          lesson={lesson}
+          userId={userId}
+          isCompleted={completedLessons.has(lesson.id)}
+        />
+      ))}
     </div>
   );
 };

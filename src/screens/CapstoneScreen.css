@@ -1,0 +1,43 @@
+.capstone-screen .content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 4rem;
+}
+
+.capstone-content {
+  max-width: 700px;
+  width: 100%;
+  background: rgba(20, 20, 40, 0.6);
+  border: 1px solid rgba(0, 242, 255, 0.3);
+  border-radius: 15px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.capstone-content h1 {
+  color: #00f2ff;
+  margin-bottom: 1rem;
+}
+
+.capstone-content p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.feedback-panel {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(0, 242, 255, 0.05);
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  border-radius: 10px;
+  text-align: left;
+}
+
+.feedback-panel h3 {
+  color: #00f2ff;
+  margin-bottom: 1rem;
+}

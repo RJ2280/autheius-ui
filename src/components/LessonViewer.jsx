@@ -1,72 +1,91 @@
-import React, { useEffect, useState } from 'react';
-import QuizRunner from './QuizRunner.jsx';
-import DiagnosticOverlay from './DiagnosticOverlay.jsx';
+import React, { useState, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import QuizRenderer from './QuizRenderer.jsx';
+import './LessonViewer.css';
 
-const LessonViewer = ({ lessonId = 'lesson01' }) => {
-  const [content, setContent] = useState('');
-  const [tutorial, setTutorial] = useState('');
-  const [quizzes, setQuizzes] = useState([]);
+const LessonViewer = ({ lessonId }) => {
+  const [activeTab, setActiveTab] = useState('lesson'); // 'lesson', 'tutorial', 'quiz'
+  const [lessonContent, setLessonContent] = useState('');
+  const [tutorialContent, setTutorialContent] = useState('');
+  const [quizData, setQuizData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const basePath = `/data/${lessonId}`;
+    const fetchLessonData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        // Robustly find the correct lesson directory path
+        const idNumber = lessonId.replace('lesson', '');
+        const possibleBasePaths = [
+          `/data/Lesson${idNumber}/`, // Correct format: "Lesson01"
+          `/data/${lessonId}/`,       // Alternative: "lesson01"
+        ];
 
-    fetch(`${basePath}/content.md`)
-      .then(res => res.ok ? res.text() : Promise.reject("No content.md"))
-      .then(setContent)
-      .catch(err => {
-        console.error("❌ content.md error:", err);
-        setError("Missing content.md");
-        setContent("⚠️ No lesson content");
-      });
+        let basePath = '';
+        for (const p of possibleBasePaths) {
+          const res = await fetch(`${p}content.md`, { method: 'HEAD' });
+          if (res.ok) {
+            basePath = p;
+            break;
+          }
+        }
 
-    fetch(`${basePath}/tutorial.md`)
-      .then(res => res.ok ? res.text() : Promise.reject("No tutorial.md"))
-      .then(setTutorial)
-      .catch(err => {
-        console.error("❌ tutorial.md error:", err);
-        setError("Missing tutorial.md");
-        setTutorial("⚠️ No tutorial");
-      });
+        if (!basePath) {
+          throw new Error(`Could not find content for lesson '${lessonId}'. Please ensure lesson data folders exist in 'public/data/'.`);
+        }
 
-    fetch(`${basePath}/quiz.json`)
-      .then(res => res.ok ? res.json() : Promise.reject("No quiz.json"))
-      .then(data => {
-        const q = Array.isArray(data.questions) ? data.questions : [];
-        setQuizzes(q);
-      })
-      .catch(err => {
-        console.error("❌ quiz.json error:", err);
-        setError("Invalid quiz.json");
-        setQuizzes([]);
-      });
+        // Fetch all lesson materials in parallel
+        const [lessonRes, tutorialRes, quizRes] = await Promise.all([
+          fetch(`${basePath}content.md`),
+          fetch(`${basePath}tutorial.md`),
+          fetch(`${basePath}quiz.json`),
+        ]);
+
+        const lessonText = await lessonRes.text();
+        const tutorialText = tutorialRes.ok ? await tutorialRes.text() : 'No tutorial available for this lesson.';
+        const quizJson = quizRes.ok ? await quizRes.json() : null;
+
+        setLessonContent(lessonText);
+        setTutorialContent(tutorialText);
+        setQuizData(quizJson);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchLessonData();
   }, [lessonId]);
 
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'lesson':
+        return <ReactMarkdown remarkPlugins={[remarkGfm]}>{lessonContent}</ReactMarkdown>;
+      case 'tutorial':
+        return <ReactMarkdown remarkPlugins={[remarkGfm]}>{tutorialContent}</ReactMarkdown>;
+      case 'quiz':
+        return quizData ? <QuizRenderer quiz={quizData} /> : <p>No quiz available for this lesson.</p>;
+      default:
+        return null;
+    }
+  };
+
+  if (loading) return <div className="loading-state">Loading lesson materials...</div>;
+  if (error) return <div className="error-state">❌ {error}</div>;
+
   return (
-    <div style={{
-      padding: '2rem',
-      backgroundColor: '#fff',
-      color: '#000',
-      fontFamily: 'sans-serif'
-    }}>
-      <h1>{`📘 ${lessonId.replace(/lesson/, 'Lesson ')}`}</h1>
-      <h2>🧠 Content</h2>
-      <p>{content}</p>
-      <h2>🎓 Tutorial</h2>
-      <p>{tutorial}</p>
-      <h2>🧪 Quiz</h2>
-      {quizzes.length === 0 ? (
-        <p>⚠️ No quiz available</p>
-      ) : (
-        <QuizRunner lessonId={lessonId} quizzes={quizzes} />
-      )}
-      <DiagnosticOverlay
-        lessonId={lessonId}
-        content={content}
-        tutorial={tutorial}
-        quizzes={quizzes}
-        error={error}
-      />
+    <div className="lesson-viewer-container">
+      <div className="lesson-tabs">
+        <button onClick={() => setActiveTab('lesson')} className={activeTab === 'lesson' ? 'active' : ''}>Lesson</button>
+        <button onClick={() => setActiveTab('tutorial')} className={activeTab === 'tutorial' ? 'active' : ''}>Tutorial</button>
+        <button onClick={() => setActiveTab('quiz')} className={activeTab === 'quiz' ? 'active' : ''}>Quiz</button>
+      </div>
+      <div className="lesson-tab-content">
+        {renderContent()}
+      </div>
     </div>
   );
 };

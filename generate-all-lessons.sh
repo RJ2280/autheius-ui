@@ -40,19 +40,20 @@ while IFS=$'\t' read -r id title level; do
     continue
   fi
 
-  DIR="$DATA_DIR/Lesson${id}"
+  # Use Bash parameter expansion for robustness. This removes the "lesson" prefix
+  # and adds a "Lesson" prefix. (e.g., "lesson01" -> "Lesson01")
+  formatted_id="Lesson${id#lesson}"
+  DIR="$DATA_DIR/${formatted_id}"
   mkdir -p "$DIR"
 
   # Create a details.json file, mapping the `level` from the source JSON
   # to the `objective` field that the frontend components expect.
   jq -n --arg id "$id" --arg title "$title" --arg objective "$level" \
-    '{id: $id, title: $title, objective: $objective}' > "$DIR/details.json"
+    '{id: $id, title: $title, objective: $objective}' > "${DIR}/details.json"
 
-  echo "✅ Generated: $DIR/details.json"
+  echo "✅ Generated: ${DIR}/details.json"
   ((lesson_count++))
 
-done < <(jq -r '
-  .[] | try ([.id | if type=="object" then .low else tostring end, .title, .level // ""]) catch empty | @tsv
-' "$JSON_FILE")
+done < <(jq -r '.[] | select(.id and .title) | [.id, .title, .level // ""] | @tsv' "$JSON_FILE")
 
 echo "🎉 Generation complete. $lesson_count lessons were processed."
