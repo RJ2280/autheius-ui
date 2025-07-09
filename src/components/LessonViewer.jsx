@@ -3,10 +3,33 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import QuizRenderer from './QuizRenderer.jsx';
 import YouTube from 'react-youtube';
-import './LessonViewer.css';
+import { Box, Tabs, Tab, CircularProgress, Alert, Paper, Typography } from '@mui/material';
+
+/**
+ * A helper component to render the content of a tab panel.
+ * It ensures content is only rendered when its corresponding tab is active.
+ */
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`lesson-tabpanel-${index}`}
+      aria-labelledby={`lesson-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3, '& h1, & h2, & h3': { mt: 2, mb: 1 }, '& p': { lineHeight: 1.7 } }}>
+          {children}
+        </Box>
+      )}
+    </div>
+  );
+}
 
 const LessonViewer = ({ lessonId }) => {
-  const [activeTab, setActiveTab] = useState('lesson'); // 'lesson', 'tutorial', 'quiz'
+  const [activeTab, setActiveTab] = useState(0); // Use index for MUI tabs
   const [lessonContent, setLessonContent] = useState('');
   const [tutorialContent, setTutorialContent] = useState('');
   const [quizData, setQuizData] = useState(null);
@@ -78,40 +101,49 @@ const LessonViewer = ({ lessonId }) => {
     fetchLessonData();
   }, [lessonId]);
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'lesson':
-        return <ReactMarkdown remarkPlugins={[remarkGfm]}>{lessonContent}</ReactMarkdown>;
-      case 'tutorial':
-        return mediaData?.youtubeId ? (
-          <div className="video-container">
-            <YouTube videoId={mediaData.youtubeId} opts={{ width: '100%', playerVars: { autoplay: 0 } }} />
-          </div>
-        ) : (
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{tutorialContent}</ReactMarkdown>
-        );
-      case 'quiz':
-        return quizData ? <QuizRenderer quiz={quizData} /> : <p>No quiz available for this lesson.</p>;
-      default:
-        return null;
-    }
+  const handleTabChange = (event, newValue) => {
+    setActiveTab(newValue);
   };
 
-  if (loading) return <div className="loading-state">Loading lesson materials...</div>;
-  if (error) return <div className="error-state">❌ {error}</div>;
+  if (loading) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', p: 4 }}>
+        <CircularProgress />
+        <Typography sx={{ ml: 2, color: 'text.secondary' }}>Loading lesson materials...</Typography>
+      </Box>
+    );
+  }
+
+  if (error) {
+    return <Alert severity="error" sx={{ m: 2 }}>{error}</Alert>;
+  }
 
   return (
-    <div className="lesson-viewer-container">
-      <div className="lesson-tabs">
-        <button onClick={() => setActiveTab('lesson')} className={activeTab === 'lesson' ? 'active' : ''}>Lesson</button>
-        <button onClick={() => setActiveTab('tutorial')} className={activeTab === 'tutorial' ? 'active' : ''}>Tutorial</button>
-        <button onClick={() => setActiveTab('quiz')} className={activeTab === 'quiz' ? 'active' : ''}>Quiz</button>
-      </div>
-      <div className="lesson-tab-content">
-        {renderContent()}
-      </div>
-    </div>
+    <Paper sx={{ width: '100%', backgroundColor: 'background.paper' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={activeTab} onChange={handleTabChange} aria-label="lesson content tabs" textColor="primary" indicatorColor="primary">
+          <Tab label="Lesson" id="lesson-tab-0" aria-controls="lesson-tabpanel-0" />
+          <Tab label="Tutorial" id="lesson-tab-1" aria-controls="lesson-tabpanel-1" />
+          <Tab label="Quiz" id="lesson-tab-2" aria-controls="lesson-tabpanel-2" />
+        </Tabs>
+      </Box>
+      <TabPanel value={activeTab} index={0}>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{lessonContent}</ReactMarkdown>
+      </TabPanel>
+      <TabPanel value={activeTab} index={1}>
+        {mediaData?.youtubeId ? (
+          <Box sx={{ position: 'relative', paddingTop: '56.25%' /* 16:9 Aspect Ratio */ }}>
+            <YouTube videoId={mediaData.youtubeId} opts={{ width: '100%', height: '100%' }} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} />
+          </Box>
+        ) : (
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{tutorialContent}</ReactMarkdown>
+        )}
+      </TabPanel>
+      <TabPanel value={activeTab} index={2}>
+        {quizData ? <QuizRenderer quiz={quizData} /> : <Typography>No quiz available for this lesson.</Typography>}
+      </TabPanel>
+    </Paper>
   );
 };
 
-export default LessonViewer;// Add this import at the top
+export default LessonViewer;

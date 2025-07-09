@@ -73,6 +73,7 @@ const Sidebar = () => {
         height: '100vh',
         // Styles to match a neon/glassmorphism theme
         backgroundColor: 'rgba(10, 25, 47, 0.85)',
+        WebkitBackdropFilter: 'blur(10px)', // Vendor prefix for Safari
         backdropFilter: 'blur(10px)',
         borderRight: '1px solid rgba(0, 255, 255, 0.2)',
         display: 'flex',

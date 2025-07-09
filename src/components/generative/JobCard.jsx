@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Card, CardContent, Typography, Box, CircularProgress, Chip, Link } from '@mui/material';
-import axios from 'axios';
+import apiClient from '../../api';
 import { useGenerationStore } from '../../state/generationStore';
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 export const JobCard = ({ job }) => {
   const updateJob = useGenerationStore((state) => state.updateJob);
@@ -12,7 +10,7 @@ export const JobCard = ({ job }) => {
 
   const pollStatus = useCallback(async () => {
     try {
-      const { data } = await axios.get(`${API_URL}/generate/status/${internalJob.id}`);
+      const { data } = await apiClient.get(`/generate/status/${internalJob.id}`);
       if (data.status === 'completed' || data.status === 'failed') {
         updateJob(internalJob.id, data);
         setInternalJob(data);

@@ -1,14 +1,16 @@
 import React from 'react';
-import TaskBar from '../layout/TaskBar.jsx';
+import { Box, Typography, Paper } from '@mui/material';
 
 const TutorialsScreen = () => (
-  <div className="tutorials-screen">
-    <TaskBar section="Tutorials" />
-    <div className="content-wrapper">
-      <h1>📖 Tutorial Hub</h1>
-      <p>This is your tutorials center. Widgets and AI agents go here.</p>
-    </div>
-  </div>
+  <Box>
+    <Typography variant="h4" component="h1" gutterBottom>
+      📖 Tutorial Hub
+    </Typography>
+    <Paper sx={{ p: 3, mt: 2 }}>
+      <Typography>This is your tutorials center. Widgets and AI agents will go here.</Typography>
+      {/* Future tutorial content can be added here */}
+    </Paper>
+  </Box>
 );
 
 export default TutorialsScreen;

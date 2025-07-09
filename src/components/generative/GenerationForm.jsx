@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, TextField, Button, Select, MenuItem, FormControl, InputLabel, CircularProgress, Typography } from '@mui/material';
+import { Box, TextField, Button, Select, MenuItem, FormControl, InputLabel, CircularProgress, Typography, Paper, Alert } from '@mui/material';
 import { useGenerationStore } from '../../state/generationStore';
 
 const imageModels = {
@@ -17,20 +17,28 @@ export const GenerationForm = () => {
   const [prompt, setPrompt] = useState('');
   const [model, setModel] = useState(Object.keys(imageModels)[0]);
   const [isLoading, setIsLoading] = useState(false);
-  const startGeneration = useGenerationStore((state) => state.startGeneration);
+  const { startGeneration, latestCritique } = useGenerationStore((state) => ({
+    startGeneration: state.startGeneration,
+    latestCritique: state.latestCritique,
+  }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!prompt || !model) return;
     setIsLoading(true);
     await startGeneration(prompt, model);
-    setPrompt('');
+    // Do not clear the prompt, so the user can refine it.
     setIsLoading(false);
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2, p: 2, border: '1px solid', borderColor: 'divider', borderRadius: 2 }}>
+    <Paper component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2, p: 2 }} elevation={2}>
       <Typography variant="h6" component="h2">Create New Asset</Typography>
+      {latestCritique && (
+        <Alert severity={latestCritique.includes("strong prompt") ? "success" : "info"} sx={{ mt: 1, mb: 1 }}>
+          {latestCritique}
+        </Alert>
+      )}
       <TextField
         label="Prompt"
         multiline
@@ -62,6 +70,6 @@ export const GenerationForm = () => {
       <Button type="submit" variant="contained" disabled={isLoading || !prompt}>
         {isLoading ? <CircularProgress size={24} /> : 'Generate'}
       </Button>
-    </Box>
+    </Paper>
   );
 };
