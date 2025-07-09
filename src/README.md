@@ -1,13 +1,14 @@
-🧠 Autheius AI System Tracker
+## Autheius AI System Tracker ##
+
 Project: Autheius AI-Clean Frontend + Autheius Dashboard + Launchpad + Backend Maintainer: Robbie Status: 🟢 Active and growing
 📜 Inception: The Vision
 Autheius AI is a futuristic lesson dashboard and intelligence interface, built to synthesize AI learning, prompt mastery, and autonomous agent deployment. It collaborates with Autheius AI systems to create a complete educational ecosystem powered by generative and agentic intelligence.
 🧬 Core Components
-Folder Path	Role
-chimera-clean/	Frontend workspace UI
-autheius-ui/	Neon-themed lesson dashboard (Vite + React)
-chimera-backend/	Central controller: APIs, data, auth, lesson sync
-chimera-autheius-launchpad/	Unified launch interface connecting all subsystems
+Folder Path Role
+chimera-clean/ Frontend workspace UI
+autheius-ui/ Neon-themed lesson dashboard (Vite + React)
+chimera-backend/ Central controller: APIs, data, auth, lesson sync
+chimera-autheius-launchpad/ Unified launch interface connecting all subsystems
 ⚙️ Completed Milestones
 🔹 Project Setup
 [x] autheius-ui scaffolded using Vite
