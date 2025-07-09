@@ -1,12 +1,13 @@
 {
   "questions": [
-    "1. What is prompt engineering?",
-    "2.  What is the primary purpose of a prompt in interacting with an LLM?",
-    "4.  What is the benefit of using few-shot prompts?",
-    "5.  Why is specificity important in prompt engineering?",
-    "7.  What type of prompt would you use to get the LLM to write a poem?",
-    "8.  What is a scenario-based prompt? Give an example.",
-    "9.  How can you control the output format of an LLM?",
-    "10. Why is it important to iterate and refine prompts?"
+    "**1. What is prompt engineering?**",
+    "**2. Which of the following is NOT a key component of an effective prompt?**",
+    "**3.  What type of prompt is \"Write a haiku about the ocean\"?**",
+    "**5. What is the purpose of temperature control in prompt engineering?**",
+    "**6. Which prompt type is best suited for comparing and contrasting different concepts?**",
+    "**7. \"Generate a recipe for a vegan chocolate cake\" is an example of which type of prompt?**",
+    "**8. What is the purpose of chain-of-thought prompting?**",
+    "**9.  What does iterative mean in the context of prompt engineering?**",
+    "**10. What is an example of a constraint you might add to a prompt?**"
   ]
 }

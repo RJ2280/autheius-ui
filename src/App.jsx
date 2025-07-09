@@ -12,6 +12,7 @@ import LessonCenter from './components/LessonCenter.jsx';
 const App = () => (
   <Router>
     <Routes>
+      <Route path="/" element={<AppLayout><DashboardScreen /></AppLayout>} />
       <Route path="/lesson/:id" element={<AppLayout><LessonViewerWrapper /></AppLayout>} />
       <Route path="/lesson-center" element={<AppLayout><LessonCenter /></AppLayout>} />
       <Route path="*" element={<AppLayout><Navigate to="/" replace /></AppLayout>} />

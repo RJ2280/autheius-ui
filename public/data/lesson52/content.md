@@ -2,120 +2,116 @@
 
 ## Overview
 
-Prompt engineering is the art and science of crafting effective inputs, or "prompts," for AI models like large language models (LLMs).  A well-crafted prompt elicits the desired response, whether it's generating creative text formats, translating languages, writing different kinds of creative content, or answering your questions in an informative way. This lesson delves into intermediate prompt engineering techniques, building upon basic prompt construction and exploring strategies for controlling output, handling complexity, and optimizing for specific tasks.
+Prompt engineering is the art and science of crafting effective input prompts for AI models, particularly large language models (LLMs), to elicit desired responses. It involves understanding how these models work, what kind of input they respond well to, and how to structure your queries to achieve specific outcomes.  A well-crafted prompt can be the difference between a generic, unhelpful response and a targeted, insightful one. This lesson will equip you with the fundamental principles and practical techniques to become a proficient prompt engineer.
 
 ## Objectives
 
 By the end of this lesson, you will be able to:
 
-* Understand advanced prompt engineering principles.
-* Construct prompts for various creative and informative tasks.
-* Control the tone, style, and format of AI-generated output.
-* Implement techniques like few-shot learning and chain-of-thought prompting.
-* Evaluate and refine prompts for optimal performance.
-* Troubleshoot common prompt engineering challenges.
+* Understand the core concepts of prompt engineering.
+* Identify different types of prompts and their applications.
+* Apply various prompt engineering techniques to improve response quality.
+* Construct effective prompts for diverse tasks, including text generation, summarization, translation, and question answering.
+* Evaluate the effectiveness of prompts and iterate to refine them.
 
 ## Concepts
 
-### 1. Beyond Basic Prompts: Adding Constraints and Control
+### 1. The Importance of Context
 
-Basic prompts simply state the desired task. Intermediate prompt engineering introduces constraints for greater control:
+LLMs don't possess real-world knowledge or common sense.  They rely heavily on the context provided in the prompt.  Clear, concise, and context-rich prompts are crucial for generating relevant responses.
 
-* **Format specification:** Explicitly define the desired output format (e.g., "Write a sonnet," "Create a bulleted list," "Generate a JSON object").
-* **Tone and style control:** Guide the AI's voice (e.g., "Write in a formal tone," "Use humorous language," "Adopt a scientific style").
-* **Length restriction:**  Specify the desired length (e.g., "Summarize in 100 words," "Write a 500-word essay").
-* **Perspective setting:** Frame the response from a specific viewpoint (e.g., "Write from the perspective of a doctor," "Imagine you are a historian").
+### 2.  Prompt Elements
 
-### 2. Few-Shot Learning: Guiding with Examples
+A well-structured prompt often includes these elements:
 
-Few-shot learning involves providing the AI with a few examples of the desired input-output pairs before presenting the actual prompt. This helps the model understand the task better, especially for complex or nuanced requests.
+* **Instructions:**  Tell the model what you want it to do (e.g., "Summarize the following text").
+* **Context:** Provide the necessary information for the task (e.g., the text to summarize).
+* **Input Data:** Any specific data the model should operate on (e.g., keywords, examples).
+* **Output Indicator:**  Specify the desired output format (e.g., "in bullet points", "as a table").
 
-**Example:**
+### 3.  Prompting Techniques
 
-```
-Input: Translate English to French
-
-Example 1:
-English: Hello
-French: Bonjour
-
-Example 2:
-English: Goodbye
-French: Au revoir
-
-Example 3:
-English: Thank you
-French: Merci
-
-Now translate: Good morning
-```
-
-### 3. Chain-of-Thought Prompting: Encouraging Reasoning
-
-Chain-of-thought prompting encourages the AI to explicitly articulate its reasoning process before providing the final answer. This leads to more accurate and logical outputs, particularly for tasks requiring complex reasoning or problem-solving.
-
-**Example:**
-
-```
-Question: Jane had 3 apples. She gave 1 to John and 1 to Mary. How many apples does Jane have left?
-
-Chain of thought: Jane started with 3 apples. She gave away 2 apples in total (1 to John and 1 to Mary). Therefore, 3 - 2 = 1.
-
-Answer: Jane has 1 apple left.
-```
-
-### 4. Advanced Techniques: Fine-tuning and Parameter Adjustment
-
-For more advanced applications, you can explore fine-tuning pre-trained models on specific datasets or adjusting parameters like temperature and top-p to influence the creativity and randomness of the output.  These techniques require a deeper understanding of the underlying AI models and are typically used for specialized applications.
-
+* **Few-Shot Learning:** Providing the model with a few examples of input-output pairs before giving it the actual task.  This helps the model understand the desired pattern.
+* **Chain-of-Thought Prompting:**  Encouraging the model to reason step-by-step before arriving at a final answer, improving accuracy for complex tasks.
+* **Zero-Shot Chain-of-Thought Prompting:** Combining zero-shot prompting with chain-of-thought reasoning, allowing the model to solve tasks it hasn't explicitly been trained on.
+* **Constraint-Based Prompting:**  Setting specific constraints on the output, such as length, style, or tone.
+* **Role Prompting:**  Assigning a specific role to the LLM (e.g., "Act as a financial advisor").  This helps the model adopt a particular perspective and generate more relevant responses.
 
 ## Practice Tasks
 
-1. **Creative Writing:** Write a prompt to generate a short story about a robot who learns to feel emotions. Specify the tone, style, and length. Use few-shot learning to provide examples of emotional descriptions.
+### Task 1:  Summarization with Few-Shot Learning
 
-2. **Informative Task:** Create a prompt to summarize a complex scientific article.  Control the length and ensure the summary maintains the key findings and implications of the research.  Use chain-of-thought prompting to encourage the AI to explain its summarization process.
+**Instructions:** Summarize the following article in one sentence.
 
-3. **Code Generation:** Write a prompt to generate Python code for a specific function. Include clear instructions about the function's purpose, inputs, and outputs.  Test the generated code and refine the prompt as needed.
+**Examples:**
 
-4. **Translation and Language Tasks:** Craft a prompt to translate a paragraph from English to Spanish, maintaining the original meaning and nuance. Experiment with different prompt structures to optimize the translation quality.
+* **Article:** "The cat sat on the mat."
+* **Summary:** A cat rested on a mat.
 
-5. **Problem Solving:** Design a prompt to solve a logic puzzle. Use chain-of-thought prompting to guide the AI through the reasoning steps.
+* **Article:** "The quick brown fox jumps over the lazy dog."
+* **Summary:** A fast fox leaped over a slow dog.
 
-## Troubleshooting Common Challenges
+**Article:**  "Scientists have discovered a new species of frog in the Amazon rainforest.  This brightly colored amphibian is notable for its unusual call, which sounds like a bird chirping."
 
-* **Vague or ambiguous prompts:** Ensure your prompts are clear, specific, and unambiguous.
-* **Unexpected outputs:** Refine the prompt by adding more constraints, examples, or using chain-of-thought prompting.
-* **Overly creative or illogical responses:** Adjust parameters like temperature and top-p or use more specific instructions.
-* **Bias in output:** Be mindful of potential biases in training data and strive to create prompts that mitigate these biases.
+### Task 2:  Question Answering with Chain-of-Thought Prompting
 
+**Question:** If John has 3 apples and gives 1 to Mary, how many apples does John have left?
+
+**Chain-of-Thought:** John starts with 3 apples. He gives 1 apple to Mary.  3 - 1 = 2. Therefore, John has 2 apples left.
+
+**Answer:** 2
+
+### Task 3:  Text Generation with Role Prompting and Constraint-Based Prompting
+
+**Prompt:** You are a travel blogger writing a short (under 100 words) and enthusiastic blog post about visiting Paris.
+
+### Task 4: Translation using Few-Shot Learning
+
+**Instructions:** Translate the following English phrases into French.
+
+**Examples:**
+
+* **English:** Hello
+* **French:** Bonjour
+
+* **English:** Goodbye
+* **French:** Au revoir
+
+**English:**  Thank you
+
+### Task 5: Creative Writing with Constraint-Based Prompting
+
+**Prompt:** Write a short story about a robot who learns to feel emotions, but restrict the story to exactly 50 words.
+
+## Advanced Concepts (Brief Introduction)
+
+* **Temperature and Top-p parameters:** These parameters control the randomness and creativity of the model's output.
+* **Prompt Injection Attacks:** Understanding potential vulnerabilities in prompt engineering where malicious prompts can manipulate the model's behavior.
 
 ## Quiz
 
-1.  What is the primary purpose of prompt engineering?
-2.  Explain the concept of few-shot learning and provide an example.
-3.  How does chain-of-thought prompting improve the quality of AI-generated responses?
-4.  Give two examples of how you can control the format of AI-generated output.
-5.  What are some strategies for troubleshooting vague or ambiguous prompts?
-6.  How can you use prompt engineering to generate creative writing pieces?
-7.  Describe the role of temperature and top-p parameters in prompt engineering.
-8.  Provide an example of how you can use prompt engineering for a problem-solving task.
-9.  What are the potential challenges of bias in AI-generated output, and how can prompt engineering address them?
-10. Explain the difference between a basic prompt and an intermediate-level prompt.
+1. What is the primary goal of prompt engineering?
+2. Explain the concept of Few-Shot Learning.
+3. Provide an example of a prompt that uses Chain-of-Thought prompting.
+4. Why is context important in prompt engineering?
+5. What is the purpose of Role Prompting?
+6. Give an example of Constraint-Based Prompting.
+7. What are two potential elements of a well-structured prompt?
+8. How can prompt engineering be used for text summarization?
+9. Briefly describe the purpose of "Temperature" in prompt generation.
+10. What is a potential risk associated with poorly designed prompts?
 
+## Quiz Answers
 
-## Quiz Answers (Hidden initially -  reveal after attempting the quiz)
+1. To craft effective input prompts for AI models to elicit desired and accurate responses.
+2. Providing the model with a few examples of input-output pairs before giving it the actual task, helping it understand the desired pattern.
+3. "If a train leaves London at 8:00 AM and travels at 60 mph, and another train leaves Birmingham at 9:00 AM and travels at 80 mph towards London, assuming the distance is 120 miles, when will they meet?  Think step by step."
+4. LLMs lack real-world knowledge; context provides the necessary information for generating relevant responses.
+5. To guide the LLM to adopt a particular perspective and generate more relevant responses based on the assigned role.
+6. "Write a poem about nature, but limit it to 10 lines."
+7. Instructions and Context.
+8. By providing the model with the text to be summarized and instructions on how long the summary should be, or by using few-shot learning with example summaries.
+9. Temperature controls the randomness of the model's output; higher temperature results in more creative but potentially less coherent text.
+10. Prompt Injection attacks, where malicious prompts can manipulate the model's behavior.
 
-<details>
-  <summary>Click to reveal answers</summary>
-
-1. To craft effective inputs for AI models to elicit desired responses.
-2. Few-shot learning involves providing the AI with a few examples of input-output pairs before the actual prompt, helping the model understand the task. Example: Showing the AI English-French translations before asking it to translate a new word.
-3.  It encourages the AI to explain its reasoning process, leading to more accurate and logical outputs.
-4.  Specifying the desired format (e.g., "Write a list") and defining the length (e.g., "Summarize in 100 words").
-5. Adding more constraints, examples, or using chain-of-thought prompting.
-6. By specifying the genre, tone, style, characters, and plot points in the prompt.
-7. They control the creativity and randomness of the generated output. Higher temperature leads to more creative but potentially less coherent text.
-8.  By phrasing the problem clearly and using chain-of-thought prompting to guide the AI through the logical steps.
-9.  AI models can inherit biases from their training data, leading to unfair or discriminatory outputs. Prompt engineering can address this by carefully crafting prompts that avoid biased language and encourage fair and balanced responses.
-10. Basic prompts simply state the task, while intermediate prompts incorporate constraints, examples, and techniques like few-shot learning and chain-of-thought prompting for greater control and better outputs.
-</details> 
+This lesson provides a strong foundation in prompt engineering. Continuous practice and experimentation with different prompting techniques are crucial to mastering this valuable skill.  As you gain more experience, you'll be able to craft increasingly sophisticated prompts to unlock the full potential of AI models.

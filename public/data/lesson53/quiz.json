@@ -1,10 +1,11 @@
 {
   "questions": [
     "1. What is the primary purpose of few-shot learning in prompt engineering?",
-    "2. How does chain-of-thought prompting improve reasoning capabilities in LLMs?",
-    "6.  What are the potential drawbacks of overly long prompts?",
-    "7.  How can constraints be used to improve the relevance of LLM generated content?",
-    "8.  What is the difference between few-shot learning and zero-shot learning?",
-    "10. Why is iterative refinement important in prompt engineering?"
+    "2. How does chain-of-thought prompting improve the reasoning abilities of LLMs?",
+    "5. How can constraints be used to control the output of an LLM?",
+    "6. What is the difference between zero-shot and few-shot chain-of-thought prompting?",
+    "8.  What are some potential challenges in using few-shot learning with LLMs?",
+    "9. How can you guide an LLM to adopt a specific writing style (e.g., humorous, formal)?",
+    "10. Why is it important to be specific and unambiguous in prompt design?"
   ]
 }

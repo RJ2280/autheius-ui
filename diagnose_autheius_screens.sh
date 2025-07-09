@@ -1,8 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo "🔍 Scanning Autheius UI for missing screens..."
 
-cd src || { echo "❌ Directory 'autheius-ui/src' not found."; exit 1; }
+# Assuming the script is run from the project root
+cd src || { echo "❌ Directory 'autheius-ui/src' not found. Please run from the project root."; exit 1; }
 
 mkdir -p screens layout
 
@@ -26,16 +27,17 @@ if [ ${#missing[@]} -eq 0 ]; then
 else
   echo "🛠 Recreating missing screen files..."
   for name in "${missing[@]}"; do
-    cat <<EOF > screens/${name}Screen.jsx
+    lower_name=$(echo "$name" | tr '[:upper:]' '[:lower:]')
+    cat <<EOF > "screens/${name}Screen.jsx"
 import React from 'react';
 import TaskBar from '../layout/TaskBar.jsx';
 
 const ${name}Screen = () => (
-  <div className="${name.toLowerCase()}-screen">
+  <div className="${lower_name}-screen">
     <TaskBar section="${name}" />
     <div className="content-wrapper">
       <h1>${name} Center</h1>
-      <p>This screen hosts ${name.toLowerCase()} functionality.</p>
+      <p>This screen hosts ${lower_name} functionality.</p>
     </div>
   </div>
 );
