@@ -1,67 +1,69 @@
 # Lesson 50: Capstone Project: Deploying a Full AI Agent System
 
-This capstone project culminates your learning journey by tasking you with deploying a complete AI agent system.  You'll integrate all the concepts learned throughout the curriculum, from data preprocessing and model training to deployment and monitoring. This isn't just about deploying a single model; it's about building a robust, functioning system.
+This capstone project culminates your learning journey in AI engineering.  You will deploy a complete AI agent system, integrating all the concepts learned throughout the course. This isn't just about deploying a single model; it's about building a robust, scalable, and maintainable system.
 
-## Project Overview:  Smart Home Energy Management
+## Project Goal: Deploy a Smart Home Energy Management System
 
-Your goal is to deploy an AI agent that optimizes energy consumption in a smart home environment.  The agent will:
+Your task is to deploy a smart home energy management AI agent. This agent will:
 
-1. **Collect Data:** Gather real-time energy usage data from simulated smart home devices (e.g., appliances, lighting).  We'll provide a simulated data stream for this project.
-2. **Process Data:** Clean, preprocess, and potentially transform the collected data to prepare it for model input.  This might involve handling missing values, normalization, and feature engineering.
-3. **Predict Energy Demand:**  Utilize a trained machine learning model (e.g., LSTM, Prophet) to predict future energy demand based on historical data and external factors (e.g., time of day, weather).  You can use a pre-trained model or train your own.
-4. **Optimize Energy Usage:** Based on the prediction, the agent will make decisions to optimize energy consumption. This might involve scheduling appliance operation, adjusting thermostat settings, or switching to alternative energy sources (simulated).
-5. **Deploy and Monitor:** Deploy the complete system using a suitable platform (e.g., Docker, AWS Lambda, Google Cloud Functions) and implement monitoring capabilities to track performance and identify potential issues.
-
-## Project Requirements
-
-* **Programming Languages:** Python (with relevant libraries like Pandas, Scikit-learn, TensorFlow/PyTorch, etc.)
-* **Deployment Platform:** Docker is recommended, but you can choose another platform based on your familiarity and resource availability.  Explain your choice in your final report.
-* **Data Handling:**  Proficient use of Pandas for data manipulation and cleaning.
-* **Model Selection:** Justification for the chosen model based on its suitability for the task.
-* **Monitoring:** Implementation of basic monitoring to track key metrics (e.g., prediction accuracy, system uptime).
-* **Documentation:**  A comprehensive report detailing the system architecture, implementation details, results, and challenges encountered.
+1. **Collect Data:** Gather real-time energy consumption data from smart meters (simulated data can be used initially).
+2. **Process Data:** Clean, pre-process, and potentially transform the data for optimal model performance.
+3. **Predict Energy Consumption:** Employ a machine learning model (e.g., LSTM, Prophet) to predict future energy consumption based on historical data and external factors (e.g., weather, time of day).
+4. **Optimize Energy Usage:**  Based on predictions, the agent should suggest energy-saving strategies (e.g., adjusting thermostat, shifting appliance usage).
+5. **Actuate Control:**  Simulate the actuation of smart home devices based on optimization recommendations.
+6. **Monitor & Log:** Continuously monitor the system's performance and log key metrics (energy savings, prediction accuracy).
+7. **Deploy & Maintain:** Deploy the entire system using a suitable cloud platform (e.g., AWS, Google Cloud, Azure) and implement monitoring and maintenance procedures.
 
 
-## Project Steps
+## Project Requirements & Deliverables:
 
-1. **Data Acquisition and Preprocessing:**  Access the provided simulated smart home energy dataset.  Clean the data, handle missing values, and engineer relevant features.  Include a detailed description of your preprocessing steps in your report.
-
-2. **Model Training (if necessary):** If you choose to train your own model, select an appropriate model architecture, train it on the preprocessed data, and evaluate its performance using suitable metrics. Document your model training process, including hyperparameter tuning and model selection.
-
-3. **Agent Logic Development:** Develop the core logic of the AI agent that makes decisions based on the model's predictions. This will involve integrating the model with the data acquisition and optimization components.
-
-4. **Deployment:** Package your application using Docker (or your chosen platform).  Write a comprehensive Dockerfile (or equivalent).  Deploy your application to a chosen environment.
-
-5. **Monitoring Implementation:** Implement basic monitoring to track key performance indicators (KPIs) such as prediction accuracy, system uptime, and energy savings. Log these metrics appropriately.
+* **Data Acquisition:** Implement a data acquisition pipeline using appropriate APIs or simulated data.  Provide clear documentation on data sources and preprocessing steps.
+* **Model Development:** Develop and train a suitable predictive model. Justify your model choice based on the data characteristics and performance metrics.  Include a thorough model evaluation.
+* **Optimization Algorithm:** Implement an optimization algorithm that suggests energy-saving strategies based on predictions.  Clearly document the optimization logic and its parameters.
+* **System Architecture:** Design and document the overall system architecture, including components, data flow, and interdependencies.  Consider using diagrams (e.g., UML) to illustrate the system design.
+* **Deployment:** Deploy the entire system to a cloud platform. Provide instructions for deployment and access.
+* **Monitoring & Logging:** Implement a monitoring and logging system to track key performance indicators.  Demonstrate how you would identify and address potential issues.
+* **Documentation:**  Thorough documentation is crucial.  This includes a project report detailing the design choices, implementation details, and results.  Also provide clear, concise instructions for running the deployed system.
 
 
-## Example Code Snippet (Dockerfile):
+## Technology Stack (Suggestions):
 
-```dockerfile
-FROM python:3.9-slim-buster
+* **Programming Language:** Python (with libraries like Pandas, Scikit-learn, TensorFlow/PyTorch, Flask/FastAPI)
+* **Cloud Platform:** AWS, Google Cloud, or Azure (choose one)
+* **Database:**  Suitable database for storing historical data (e.g., PostgreSQL, MySQL, Cloud-based solutions)
+* **Containerization:** Docker (recommended for easier deployment)
+* **Orchestration:** Kubernetes (optional, for advanced deployments)
 
-WORKDIR /app
 
-COPY requirements.txt requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+## Example Code Snippet (Data Preprocessing):
 
-COPY . .
+```python
+import pandas as pd
 
-CMD ["python", "main.py"]
+def preprocess_data(data):
+    # Handle missing values
+    data.fillna(method='ffill', inplace=True)  # Forward fill missing values
+
+    # Feature scaling (example: MinMaxScaler)
+    from sklearn.preprocessing import MinMaxScaler
+    scaler = MinMaxScaler()
+    data[['energy_consumption']] = scaler.fit_transform(data[['energy_consumption']])
+
+    return data
+
+# Example usage
+data = pd.read_csv('energy_data.csv')
+preprocessed_data = preprocess_data(data)
 ```
 
-## Submission Requirements
+## Evaluation Criteria:
 
-* **Code Repository:**  A well-organized Git repository containing all your code, documentation, and a `README.md` file.
-* **Deployment URL (if applicable):**  A link to your deployed application if you choose a cloud-based deployment.
-* **Final Report:** A detailed report (PDF or similar format) describing your project, including:
-    * Problem statement and approach
-    * Data preprocessing steps
-    * Model selection and training (if applicable)
-    * System architecture
-    * Deployment details
-    * Results and analysis
-    * Challenges and lessons learned
+* **Functionality:** Does the system correctly collect, process, predict, and optimize energy usage?
+* **Accuracy:** How accurate are the energy consumption predictions?
+* **Scalability:** Can the system handle increasing data volume and complexity?
+* **Maintainability:** Is the code well-structured, documented, and easy to maintain?
+* **Deployment:** Is the system successfully deployed to a cloud platform?
+* **Documentation:** Is the project well-documented?
 
 
-This capstone project is designed to challenge you and solidify your understanding of the entire AI system development lifecycle.  Good luck!
+This capstone project is designed to challenge you and solidify your understanding of building and deploying a complete AI system.  Remember to break down the project into smaller, manageable tasks, and don't hesitate to seek assistance from your instructors and peers. Good luck!

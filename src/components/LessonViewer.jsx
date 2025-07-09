@@ -19,7 +19,16 @@ const LessonViewer = ({ lessonId }) => {
       setLoading(true);
       setError(null);
       try {
-        const idNumber = lessonId.replace('lesson', '');
+        // Defensively handle the lessonId prop. It should be a string, but if it's
+        // an object like { id: 'lesson01' }, this will extract the string.
+        const idString = (typeof lessonId === 'object' && lessonId !== null) ? String(lessonId.id || lessonId) : String(lessonId);
+
+        if (!idString || idString === 'undefined' || idString.includes('object')) {
+          // Provide a more informative error if the ID is still invalid.
+          throw new Error(`Invalid lessonId provided. Expected a string, but got: ${JSON.stringify(lessonId)}`);
+        }
+
+        const idNumber = idString.replace('lesson', '');
         // The generate-lessons.js script creates folders like "Lesson01", "Lesson02", etc.
         // We will construct the path directly based on this known format.
         const basePath = `/data/Lesson${idNumber}/`;
@@ -106,6 +115,3 @@ const LessonViewer = ({ lessonId }) => {
 };
 
 export default LessonViewer;// Add this import at the top
-
-
-
